@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freeshco - Frutas y Verduras Frescas Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; color: #333; background-color: #fafafa; }
+        
+        .top-bar { display: flex; justify-content: space-between; align-items: center; padding: 12px 30px; background-color: #1e4620; color: white; }
+        .top-bar .logo-container img { height: 40px; }
+        .top-bar nav a { color: white; margin-left: 20px; font-size: 1.05rem; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .top-bar nav a:hover { color: #a5d6a7; }
+        .top-bar .social-links a { color: white; margin-left: 15px; font-size: 1.3rem; transition: color 0.3s; text-decoration: none; }
+        .top-bar .social-links a:hover { color: #a5d6a7; }
+
+        header { background-color: #2e7d32; color: white; text-align: center; padding: 3.5rem 1rem; }
+        header h1 { margin: 0; font-size: 3rem; letter-spacing: -1px; }
+        header p { font-size: 1.25rem; margin-top: 10px; opacity: 0.9; }
+        
+        .btn { background-color: #25D366; color: white; padding: 16px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; margin-top: 25px; transition: background 0.3s, transform 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .btn:hover { background-color: #128C7E; transform: translateY(-2px); }
+
+        .section { padding: 4rem 1.5rem; max-width: 1000px; margin: 2rem auto; background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .section h2 { color: #1b5e20; font-size: 2.2rem; margin-bottom: 1.5rem; text-align: center; }
+
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left; padding: 10px; }
+        .about-grid h3 { color: #1e4620; font-size: 1.4rem; margin-top: 0; }
+
+        .gallery { padding: 4rem 1.5rem; text-align: center; background-color: #ffffff; }
+        .gallery h2 { font-size: 2rem; color: #1b5e20; margin-bottom: 2.5rem; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto; }
+        .gallery-item { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.06); transition: transform 0.3s, box-shadow 0.3s; border: 1px solid #eee; }
+        .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .gallery-item img { width: 100%; height: 230px; object-fit: cover; display: block; }
+        .gallery-item-text { padding: 1.2rem; font-weight: 600; font-size: 1.1rem; color: #1e4620; }
+        
+        .table-container { overflow-x: auto; margin-top: 20px; }
+        table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 10px; overflow: hidden; }
+        th, td { padding: 18px 22px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background-color: #1e4620; color: white; }
+        td { background-color: #fcfcfc; }
+        
+        footer { background-color: #1e4620; color: white; text-align: center; padding: 2.5rem 1rem; }
+        footer .social-icons { margin-top: 15px; }
+        footer .social-icons a { color: white; font-size: 1.5rem; margin: 0 12px; transition: color 0.3s; }
+        footer .social-icons a:hover { color: #a5d6a7; }
+
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; border-radius: 50px; padding: 14px 22px; text-decoration: none; font-weight: bold; box-shadow: 0px 4px 12px rgba(0,0,0,0.3); z-index: 100; transition: transform 0.3s, background-color 0.3s; display: flex; align-items: center; gap: 8px; font-size: 1.05rem; }
+        .whatsapp-float:hover { transform: translateY(-3px); background-color: #128C7E; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.3rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .whatsapp-float { bottom: 20px; right: 20px; padding: 12px 18px; font-size: 0.95rem; }
+            .top-bar { flex-direction: column; gap: 12px; }
+            .top-bar nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .top-bar nav a { margin: 0; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Logo Freeshco" style="height: 45px; width: auto; border-radius: 50%;">
+        </div>
+        <nav>
+            <a href="#catalogo">Catálogo Digital</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#entregas">Entregas</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+        <div class="social-links">
+            <a href="https://www.instagram.com/freeshco.ar/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <header>
+        <h1>Freeshco</h1>
+        <p>Frutas y verduras de primerísima calidad directo a tu mesa.</p>
+        <a href="https://wa.me/5491131031994?text=¡Hola!%20Vengo%20de%20la%20página%20web." class="btn">Hacer mi pedido ahora</a>
+    </header>
+
+    <section id="catalogo" class="section">
+        <h2>Catálogo Digital</h2>
+        <p style="font-size: 1.1rem; line-height: 1.6; text-align: center; max-width: 800px; margin: 0 auto 30px; color: #555;">
+            El pedido primero requiere de una cotización personalizada para cada cliente y luego se arma. En el catálogo vas a poder ver los precios referenciales, pero la idea es que tu pedido sea totalmente personalizado.
+        </p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1610832958509-ab538026cc43?auto=format&fit=crop&w=600&q=80" alt="Combos de Frutas">
+                <div class="gallery-item-text">Combos de Frutas</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80" alt="Cajones de Verduras">
+                <div class="gallery-item-text">Cajones de Verduras</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1534723328310-584fd13ea147?auto=format&fit=crop&w=600&q=80" alt="Selección Especial">
+                <div class="gallery-item-text">Selección Especial para Negocios</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="section">
+        <h2>Nosotros</h2>
+        <p style="font-size: 1.1rem; text-align: center; margin-bottom: 30px; color: #555;">
+            Hoy queremos presentarnos. Somos quienes trabajamos día a día para que la frescura y la calidad de Freeshco no sean solo una promesa, sino una realidad:
+        </p>
+        <div class="about-grid">
+            <div style="background: #fdfdfd; padding: 25px; border-radius: 10px; border-left: 4px solid #1b5e20;">
+                <h3>📍 Lean | Operaciones y Logística</h3>
+                <p style="line-height: 1.6; color: #444;">El encargado de la selección minuciosa en el Mercado y de que la cadena de suministro nunca se detenga.</p>
+            </div>
+            <div style="background: #fdfdfd; padding: 25px; border-radius: 10px; border-left: 4px solid #25D366;">
+                <h3>📍 Barbie | Relaciones Comerciales</h3>
+                <p style="line-height: 1.6; color: #444;">Tu primer contacto. Quien entiende tus necesidades y gestiona cada alianza para que crezcamos juntos.</p>
+            </div>
+        </div>
+    </section>
+.
+    <section id="entregas" class="section">
+        <h2>Entregas</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Días de entrega</th>
+                        <th>Zona de cobertura</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Lunes a Viernes</strong></td>
+                        <td>CABA y ZONA NORTE</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lunes y Jueves</strong></td>
+                        <td>Escobar, Pilar, Nordelta</td>
+                    </tr>
+                    <tr style="background: #f9fdfa;">
+                        <td colspan="2">
+                            <em>¿Sos de otra zona? No dudes en consultarnos así nos organizamos y te hacemos llegar la mercadería.</em>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="contacto" class="section">
+        <h2>Contacto</h2>
+        <div style="text-align: center; font-size: 1.2rem; line-height: 2.0; color: #333;">
+            <p><i class="fa-solid fa-phone" style="color: #1e4620; margin-right: 10px;"></i><strong>Teléfono:</strong> 5491131031994</p>
+            <p><i class="fa-brands fa-instagram" style="color: #1e4620; margin-right: 10px;"></i><strong>Instagram:</strong> <a href="https://www.instagram.com/freeshco.ar/" target="_blank" style="color: #2e7d32;">@Freeshco.ar</a></p>
+            <p><i class="fa-solid fa-envelope" style="color: #1e4620; margin-right: 10px;"></i><strong>Mail:</strong> FreeshCo@gmail.com</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Freeshco. Todos los derechos reservados.</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/freeshco.ar/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5491131031994?text=¡Hola!%20Vengo%20de%20la%20página%20web" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Pedir por WhatsApp
+    </a>
+
+</body>
+</html>
